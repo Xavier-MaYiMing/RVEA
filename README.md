@@ -48,7 +48,7 @@ $$
 
 ```python
 if __name__ == '__main__':
-    main(105, 5000, np.array([0] * 7), np.array([1] * 7), 3)
+    main(105, 500, np.array([0] * 7), np.array([1] * 7), 3)
 ```
 
 ##### Output:
