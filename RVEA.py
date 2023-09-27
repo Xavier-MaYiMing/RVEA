@@ -180,14 +180,14 @@ def main(npop, iter, lb, ub, nobj, eta_c=30, eta_m=20, alpha=2, fr=0.1):
     # Step 2. The main loop
     for t in range(iter):
 
-        if (t + 1) % 200 == 0:
+        if (t + 1) % 100 == 0:
             print('Iteration: ' + str(t + 1) + ' completed.')
 
         # Step 2.1. GA operation
-        pop, objs = GAoperation(pop, objs, npop, nvar, nobj, lb, ub, 1, eta_c, eta_m)
+        off, off_objs = GAoperation(pop, objs, npop, nvar, nobj, lb, ub, 1, eta_c, eta_m)
 
         # Step 2.2. Environmental selection
-        pop, objs = environmental_selection(pop, objs, V, t, iter, alpha, nvar, nobj, theta)
+        pop, objs = environmental_selection(np.concatenate((pop, off), axis=0), np.concatenate((objs, off_objs), axis=0), V, t, iter, alpha, nvar, nobj, theta)
 
         # Step 2.3. Reference vector adaption
         if t % (iter * fr) == 0:
