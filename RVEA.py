@@ -116,7 +116,7 @@ def GAoperation(pop, objs, npop, nvar, nobj, lb, ub, pm, eta_c, eta_m):
     offspring = crossover(mating_pool, lb, ub, eta_c)
     offspring = mutation(offspring, lb, ub, pm, eta_m)
     new_objs = cal_obj(offspring, nobj)
-    return np.concatenate((pop, offspring), axis=0), np.concatenate((objs, new_objs), axis=0)
+    return offspring, new_objs
 
 
 def environmental_selection(pop, objs, V, t, iter, alpha, nvar, nobj, theta):
